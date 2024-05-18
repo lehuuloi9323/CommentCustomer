@@ -1,0 +1,40 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .wp {
+    width: 985px;
+    height: 613px;
+    /* background-color: aquamarine; */
+  }
+  .bg-right {
+    height: 613px;
+  }
+  .center-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .center-left h1 {
+    color: #A1A341;
+  }
+  form input{
+    height: 50px;
+  }
+  .position-relative {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c757d;
+}
