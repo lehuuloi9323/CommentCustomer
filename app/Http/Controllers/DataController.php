@@ -14,11 +14,11 @@ class DataController extends Controller
 {
     public function index(){
         $user = Auth::user()->id;
-        $restaurant = restaurant::find($user);
-        $area = area::find($user);
-        // return $restaurant;
-        // return $area;
-        return view('layouts.guest', compact('user', 'area', 'restaurant'));
+        $users = user::find($user);
+        // return $users->restaurant_id;
+        $restaurant = restaurant::find($users->restaurant_id);
+        $area = area::find($users->area_id);
+        return view('layouts.guest', compact('user', 'area', 'restaurant', 'users'));
     }
 
     public function action(Request $request){

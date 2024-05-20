@@ -7,6 +7,9 @@
             Thêm người dùng
         </div>
         <div class="card-body">
+            @if (session('status'))
+                <div class="alert alert-success">{{ Session('status') }}</div>
+                @endif
             <form method="POST" action="{{ route('admin_user_create') }}">
                 @csrf
                 <div class="form-group">

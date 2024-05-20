@@ -18,9 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('name');
             // $table->string('email')->unique();
             // $table->timestamp('email_verified_at')->nullable();
+            $table->unsignedBigInteger('area_id')->nullable();
+            $table->unsignedBigInteger('restaurant_id')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('restaurant_id')->references('id')->on('restaurants');
+            $table->foreign('area_id')->references('id')->on('areas');
+
         });
     }
 

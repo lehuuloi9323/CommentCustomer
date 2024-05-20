@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class restaurant extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name'
+    ];
     public function user(){
-        return $this->belongsTo('App\Models\user');
+        return $this->hasMany('App\Models\user');
     }
-
     public function data(){
         return $this->hasOne('App\Models\data');
     }

@@ -65,7 +65,7 @@
                         </ul>
                     </li>
                     <li class="nav-link">
-                        <a href="?view=list-user">
+                        <a href="{{ route('admin_restaurant_list') }}">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
                             </div>
@@ -73,12 +73,12 @@
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
                         <ul class="sub-menu">
-                            <li><a href="?view=add-user">Thêm mới</a></li>
-                            <li><a href="?view=list-user">Danh sách</a></li>
+                            <li><a href="{{ route('admin_restaurant_add') }}">Thêm mới</a></li>
+                            <li><a href="{{ route('admin_restaurant_list') }}">Danh sách</a></li>
                         </ul>
                     </li>
                     <li class="nav-link">
-                        <a href="?view=list-user">
+                        <a href="{{ route('admin_area_list') }}">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
                             </div>
@@ -86,12 +86,12 @@
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
                         <ul class="sub-menu">
-                            <li><a href="?view=add-user">Thêm mới</a></li>
-                            <li><a href="?view=list-user">Danh sách</a></li>
+                            <li><a href="{{ route('admin_area_add') }}">Thêm mới</a></li>
+                            <li><a href="{{ route('admin_area_list') }}">Danh sách</a></li>
                         </ul>
                     </li>
                     <li class="nav-link">
-                        <a href="?view=list-user">
+                        <a href="{{ route('admin_rate') }}">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
                             </div>
@@ -99,7 +99,7 @@
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
                         <ul class="sub-menu">
-                            <li><a href="?view=list-user">Danh sách</a></li>
+                            <li><a href="{{ route('admin_rate') }}">Danh sách</a></li>
                         </ul>
                     </li>
                     <li class="nav-link active">

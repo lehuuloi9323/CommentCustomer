@@ -28,8 +28,8 @@
         @endif  --}}
         <div class="col-md-4 text-center">
             <img class="" src="{{ asset('img/logo-niso.png') }}" alt="" width="220px" height="250px">
-            <h4 style="text-transform:uppercase;">{{ $restaurant->name }}</h4>
-            <h4 style="text-transform:uppercase;">{{ $area->name }}</h4>
+            <h4 style="text-transform:uppercase;">{{ $users->restaurant->name }}</h4>
+            <h4 style="text-transform:uppercase;">{{ $users->area->name }}</h4>
         </div>
     </div>
     <div class="row mt-2 text-center border border-3 rounded rounded-5" style="background-color: #fff;">
