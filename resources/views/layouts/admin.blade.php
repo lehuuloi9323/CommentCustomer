@@ -103,7 +103,7 @@
                         </ul>
                     </li>
                     <li class="nav-link active">
-                        <a href="?view=permission">
+                        <a href="{{ route('admin_permission_add') }}">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
                             </div>
@@ -111,9 +111,9 @@
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
                         <ul class="sub-menu">
-                            <li><a href="?view=permission">Quyền</a></li>
-                            <li><a href="?view=add-role">Thêm vai trò</a></li>
-                            <li><a href="?view=list-role">Danh sách vai trò</a></li>
+                            <li><a href="{{ route('admin_permission_add') }}">Quyền</a></li>
+                            <li><a href="{{ route('admin_role_add') }}">Thêm vai trò</a></li>
+                            <li><a href="{{ route('admin_role_list') }}">Danh sách vai trò</a></li>
                         </ul>
                     </li>
 

@@ -63,6 +63,11 @@ Route::middleware('admin.auth')->group(function(){
     Route::get('/admin/area/delete/{id}', [App\Http\Controllers\AreaController::class, 'delete'])->name('admin_area_delete');
     Route::get('/admin/rate', [App\Http\Controllers\RateController::class, 'index'])->name('admin_rate');
 
+    Route::get('/admin/permission/add', [App\Http\Controllers\PermissionController::class, 'add'])->name('admin_permission_add');
+
+    Route::get('/admin/role/add', [App\Http\Controllers\RoleController::class, 'add'])->name('admin_role_add');
+    Route::get('/admin/role/list', [App\Http\Controllers\RoleController::class, 'list'])->name('admin_role_list');
+
 });
 Route::get('/create_user', [App\Http\Controllers\UserController::class, 'createtest'])->name('create_user');
 
