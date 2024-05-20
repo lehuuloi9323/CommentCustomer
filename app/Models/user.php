@@ -59,4 +59,17 @@ class User extends Authenticatable
     public function data(){
         return $this->hasOne('App\Models\data');
     }
+
+    public function roles(){
+        return $this->belongsToMany(role::class, 'user_role');
+    }
+    public function hasPermission($permission){
+        foreach($this->roles as $role) {
+            if($role->permissions->where('slug', $permission)->count() > 0){
+                return true;
+        }
+
+    }
+        return false;
+    }
 }

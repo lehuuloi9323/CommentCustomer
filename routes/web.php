@@ -69,9 +69,12 @@ Route::middleware('admin.auth')->group(function(){
     Route::post('/admin/permission/update/{id}', [App\Http\Controllers\PermissionController::class, 'update'])->name('permission.update');
     Route::get('/admin/permission/delete/{id}', [App\Http\Controllers\PermissionController::class, 'delete'])->name('permission.delete');
 
-    Route::get('/admin/role/add', [App\Http\Controllers\RoleController::class, 'add'])->name('admin_role_add');
-    Route::get('/admin/role/list', [App\Http\Controllers\RoleController::class, 'list'])->name('admin_role_list');
-
+    Route::get('/admin/role/add', [App\Http\Controllers\RoleController::class, 'add'])->name('role.add');
+    Route::post('admin/role/store', [App\Http\Controllers\RoleController::class, 'store'])->name('role.store');
+    Route::get('/admin/role/list', [App\Http\Controllers\RoleController::class, 'list'])->name('role.list');
+    Route::get('admin/role/edit/{role}', [App\Http\Controllers\RoleController::class, 'edit'])->name('role.edit');
+    Route::post('admin/role/update/{role}', [App\Http\Controllers\RoleController::class, 'update'])->name('role.update');
+    Route::get('admin/role/delete/{role}', [App\Http\Controllers\RoleController::class, 'delete'])->name('role.delete');
 });
 Route::get('/create_user', [App\Http\Controllers\UserController::class, 'createtest'])->name('create_user');
 
