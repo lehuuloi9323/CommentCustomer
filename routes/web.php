@@ -42,10 +42,11 @@ Route::middleware('admin.auth')->group(function(){
     Route::get('/admin/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/admin/user', [App\Http\Controllers\UserController::class, 'list'])->name('admin_user_list');
     Route::get('/admin/add', [App\Http\Controllers\UserController::class, 'add'])->name('admin_user_add');
-    Route::post('/admin/create', [App\Http\Controllers\UserController::class, 'create'])->name('admin_user_create');
-    Route::post('/admin/create', [App\Http\Controllers\UserController::class, 'create'])->name('admin_user_create');
+    Route::post('/admin/user/create', [App\Http\Controllers\UserController::class, 'create'])->name('admin_user_create');
     Route::get('/admin/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('admin_user_edit');
-    Route::post('/admin/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('admin_user_update');
+    Route::post('/admin/user/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('admin_user_update');
+    Route::get('/admin/user/delete/{id}', [App\Http\Controllers\UserController::class, 'delete'])->name('admin_user_delete');
+    Route::get('/admin/user/action', [App\Http\Controllers\UserController::class, 'action'])->name('admin_user_action');
 
 
     Route::get('/admin/restaurant', [App\Http\Controllers\RestaurantController::class, 'index'])->name('admin_restaurant_list');

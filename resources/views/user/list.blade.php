@@ -16,17 +16,27 @@
         @if (!empty(session('status')))
             <div class="alert alert-success">{{ Session('status') }}</div>
         @endif
+        @if (!empty(session('warning')))
+            <div class="alert alert-warning">{{ Session('warning') }}</div>
+        @endif
         <div class="card-body">
-            {{--  <div class="analytic">
-                <a href="{{ request()->fullUrlWithQuery(['status'=>'all']) }}" class="text-primary">Tất cả<span class="text-muted">(10)</span></a>
-                <a href="{{ request()->fullUrlWithQuery(['status'=>'active']) }}" class="text-primary">Đang hoạt động<span class="text-muted">(5)</span></a>
-                <a href="{{ request()->fullUrlWithQuery(['status'=>'trash']) }}" class="text-primary">Đang khóa<span class="text-muted">(20)</span></a>
-            </div>  --}}
+            <div class="analytic">
+                <a href="{{ request()->fullUrlWithQuery(['status'=>'all']) }}" class="text-primary">Tất cả<span class="text-muted">({{ $user_all }})</span></a>
+                <a href="{{ request()->fullUrlWithQuery(['status'=>'active']) }}" class="text-primary">Đang hoạt động<span class="text-muted">({{ $user_active }})</span></a>
+                <a href="{{ request()->fullUrlWithQuery(['status'=>'trash']) }}" class="text-primary">Đang khóa<span class="text-muted">({{ $user_trash }})</span></a>
+            </div>
             <div class="form-action form-inline py-3">
-                <select class="form-control mr-1" id="">
-                    <option>Chọn</option>
-                    <option>Khóa user</option>
-                    <option>Mở user</option>
+                <form action="{{ route('admin_user_action') }}" method="GET">
+                <select class="form-control mr-1" id="" name="actions">
+                    <option value="0">Tác vụ</option>
+                    @if ($status == 'all' or $status == '')
+                    <option value="block">Khóa</option>
+                    <option value="restore">Khôi phục</option>
+                    @elseif('status'== 'active')
+                    <option value="block">Khóa</option>
+                    @else
+                    <option value="restore">Khôi phục</option>
+                    @endif
                 </select>
                 <input type="submit" name="btn-search" value="Áp dụng" class="btn btn-primary">
             </div>
@@ -43,8 +53,6 @@
                         <th scope="col">Quyền</th>
                         <th scope="col">Ngày tạo</th>
                         <th scope="col">Tác vụ</th>
-
-
                     </tr>
                 </thead>
                 <tbody>
@@ -62,7 +70,13 @@
                         <td>{{ $user->created_at }}</td>
                         <td>
                             <a href="{{ route('admin_user_edit', $user->id) }}" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                            <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
+                            {{--  {{ $user->deleted_at }}  --}}
+                            @if ($user->deleted_at != null)
+                            @else
+                            <a href="{{ route('admin_user_delete', $user->id) }}" onclick="return confirm('Bạn chắc chắn muốn khóa user này ?')" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
+                            @endif
+                        {{--  <a href="{{ route('admin_user_delete', $user->id) }}" onclick="return confirm('Bạn chắc chắn muốn khóa user này ?')" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>  --}}
+
                         </td>
                     </tr>
                     @endforeach
@@ -76,6 +90,7 @@
 
                 </tbody>
             </table>
+        </form>
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <ul class="pagination">
